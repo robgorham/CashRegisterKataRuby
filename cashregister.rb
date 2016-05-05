@@ -24,7 +24,9 @@ end
 class Register
 	@denomlist
 
-	def initialize(denomlist = [])
+	def initialize(denomlist = [Denom.new("twenty","twenties",20), Denom.new("ten","tens",10), Denom.new("five","fives",5),
+				Denom.new("one","ones",1), Denom.new("quarter","quarters",(0.25).round(2)), Denom.new("dime","dimes",0.1), Denom.new("penny","pennies",0.01), 
+				Denom.new("nickel","nickels", 0.05)])
 		@denomlist = denomlist
 		if @denomlist != []
 			@denomlist.sort!.reverse!
@@ -45,8 +47,7 @@ class Register
 	end
 
 	def GetChange(change)
-		puts change
-		result = ""
+		result = "#{change}\n"
 		count = Array.new(@denomlist.size) {0}
 		while change > 0
 			change = change.round(2)
@@ -71,7 +72,7 @@ class Register
 	end
 
 	def GetRandomChange(change)
-		result = ""
+		result = "#{change}\n"
 		count = Array.new(@denomlist.size) {0}
 		grD = 0
 		diff = 0
@@ -83,7 +84,8 @@ class Register
 			count[chosen] += 1
 			change -= @denomlist[chosen].value
 		end
-		result += "Random Change Returned:\n" + StringChange(count)		
+		result += "Random Change Returned:\n" + StringChange(count)	
+
 		result
 	end
 
@@ -93,7 +95,7 @@ denomlist = [Denom.new("fifty","fifties",50), Denom.new("twenty","twenties",20),
 				Denom.new("one","ones",1), Denom.new("quarter","quarters",(0.25).round(2)), Denom.new("dime","dimes",0.1), Denom.new("penny","pennies",0.01), 
 				Denom.new("nickel","nickels", 0.05), Denom.new("hundred","hundreds",100)]
 regi = Register.new(denomlist)
-puts regi.GetChange(478.56)
+puts regi.GetChange(478.56) + "\n"
 puts regi.GetRandomChange(478.56)
 #puts regi.GetDenomListNames
 

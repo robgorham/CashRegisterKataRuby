@@ -71,7 +71,6 @@ class Register
 	end
 
 	def GetRandomChange(change)
-		puts change
 		result = ""
 		count = Array.new(@denomlist.size) {0}
 		grD = 0

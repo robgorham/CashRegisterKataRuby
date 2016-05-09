@@ -25,6 +25,10 @@ class Register
 		return -1
 	end
 
+	def GetGreatestDenom(val)
+		@denomlist[GreatestDenom(val)]
+	end
+
 	def GetChange(change)
 		result = change.to_s
 		count = Array.new(@denomlist.size) {0}

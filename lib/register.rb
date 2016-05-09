@@ -3,7 +3,7 @@ require './lib/denom'
 class Register
 	@denomlist
 
-	def initialize(denomlist = [Denom.new("twenty","twenties",20), Denom.new("ten","tens",10), Denom.new("five","fives",5),
+	def initialize(denomlist = [Denom.new("fifty","fifties",50),Denom.new("twenty","twenties",20), Denom.new("ten","tens",10), Denom.new("five","fives",5),
 				Denom.new("one","ones",1), Denom.new("quarter","quarters",(0.25).round(2)), Denom.new("dime","dimes",0.1), Denom.new("penny","pennies",0.01), 
 				Denom.new("nickel","nickels", 0.05)])
 		@denomlist = denomlist
@@ -28,6 +28,20 @@ class Register
 	def GetGreatestDenom(val)
 		@denomlist[GreatestDenom(val)]
 	end
+
+
+
+=begin	def GetChangeArray(change)
+		count = Array.new(@denomlist.size) {0}
+		while change > 0
+			grD = GreatestDenom(change)
+			change = change.round(2)
+			count[grD] += 1
+			change -= @denomlist[grD].value
+		end
+		count
+	end
+=end
 
 	def GetChange(change)
 		result = change.to_s

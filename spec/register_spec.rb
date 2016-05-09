@@ -10,6 +10,14 @@ describe "Register" do
 				expect(d).to eql(0.01)
 			end
 		end
+
+		context "Instance w/o params" do
+			it "GetGreatestDenom(50).value == 50" do
+				r = Register.new
+				d = r.GetGreatestDenom(75).value
+				expect(d).to eql(50)
+			end
+		end
 	end
 
 	describe "sanity check" do

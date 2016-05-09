@@ -1,4 +1,4 @@
-require './denom'
+require './lib/denom'
 
 class Register
 	@denomlist

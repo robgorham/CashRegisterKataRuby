@@ -1,4 +1,4 @@
-require './register'
+require './lib/register'
 
 test = 179.57
 
